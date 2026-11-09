@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Galaxy: Nouns, Plurals & Quantifiers</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                            blue: '#3B82F6',
+                            green: '#10B981',
+                            amber: '#F59E0B'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Fredoka', 'sans-serif'],
+                        body: ['Quicksand', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #F8FAFC;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+        }
+        .pulse-subtle {
+            animation: pulse-subtle 2s infinite;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .bounce-short {
+            animation: bounce-short 0.4s ease-out;
+        }
+        @keyframes bounce-short {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col justify-between selection:bg-purple-200">
+
+    <!-- Sticky Header -->
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-white shadow-md shadow-purple-200">
+                    <i class="fa-solid fa-rocket text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent leading-none">Grammar Galaxy</h1>
+                    <p class="text-xs font-semibold text-slate-400 mt-0.5">A2 English • Interactive Grammar Explorer</p>
+                </div>
+            </div>
+
+            <!-- View Stepper Badge -->
+            <div class="flex items-center gap-2">
+                <span id="step-badge-1" class="text-xs font-bold font-heading px-3 py-1 rounded-full bg-purple-600 text-white shadow-sm">1. Learn</span>
+                <span id="step-badge-2" class="text-xs font-bold font-heading px-3 py-1 rounded-full bg-slate-100 text-slate-400">2. 20 Exercises</span>
+                <span id="step-badge-3" class="text-xs font-bold font-heading px-3 py-1 rounded-full bg-slate-100 text-slate-400">3. Finish</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+
+        <!-- ========================================================= -->
+        <!-- VIEW 1: COMPLETE GRAMMAR & STUDY GUIDE                    -->
+        <!-- ========================================================= -->
+        <div id="view-lessons" class="space-y-8">
+
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-500 rounded-3xl p-6 md:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="max-w-2xl space-y-3 relative z-10">
+                    <span class="inline-block bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold font-heading tracking-wide uppercase">
+                        📘 Step 1: Study Guide
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold font-heading leading-tight">
+                        Countable, Uncountable, Plurals & Quantifiers
+                    </h2>
+                    <p class="text-white/90 text-xs md:text-sm leading-relaxed">
+                        Read these easy rules first. When you are ready, tap the button below to solve 20 interactive mini-game exercises with instant feedback!
+                    </p>
+                </div>
+                <i class="fa-solid fa-brain text-white/10 text-9xl absolute -bottom-6 -right-6 pointer-events-none"></i>
+            </div>
+
+            <!-- Lesson 1: Countable vs Uncountable -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm space-y-6 card-hover">
+                <div class="flex items-center gap-3 text-purple-600">
+                    <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center font-bold font-heading text-lg">1</div>
+                    <h3 class="text-xl font-bold font-heading text-slate-800">Countable vs. Uncountable Nouns</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs md:text-sm">
+                    <!-- Countable -->
+                    <div class="bg-purple-50/70 border border-purple-100 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center gap-2 text-purple-700 font-heading font-bold text-base">
+                            <i class="fa-solid fa-basket-shopping"></i> Countable Nouns
+                        </div>
+                        <p class="text-slate-600">You <b>can count</b> them with numbers. They have singular and plural forms.</p>
+                        <div class="bg-white p-3 rounded-xl border border-purple-100 space-y-1">
+                            <div>🍎 1 <b>apple</b> → 3 <b>apples</b></div>
+                            <div>🚗 1 <b>car</b> → 2 <b>cars</b></div>
+                            <div>🐕 1 <b>dog</b> → 4 <b>dogs</b></div>
+                        </div>
+                    </div>
+
+                    <!-- Uncountable -->
+                    <div class="bg-teal-50/70 border border-teal-100 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center gap-2 text-teal-700 font-heading font-bold text-base">
+                            <i class="fa-solid fa-glass-water"></i> Uncountable Nouns
+                        </div>
+                        <p class="text-slate-600">You <b>cannot count</b> them one by one (liquids, food mass, concepts). No plural "-s"!</p>
+                        <div class="bg-white p-3 rounded-xl border border-teal-100 space-y-1">
+                            <div>💧 <b>Water</b>, <b>Milk</b>, <b>Coffee</b> (liquids)</div>
+                            <div>🍚 <b>Rice</b>, <b>Bread</b>, <b>Cheese</b> (food mass)</div>
+                            <div>💰 <b>Money</b>, <b>Time</b>, <b>Music</b> (ideas)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 2: Plural Spelling Machine Rules -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm space-y-6 card-hover">
+                <div class="flex items-center gap-3 text-pink-600">
+                    <div class="w-10 h-10 rounded-xl bg-pink-100 flex items-center justify-center font-bold font-heading text-lg">2</div>
+                    <h3 class="text-xl font-bold font-heading text-slate-800">Plural Noun Spelling Rules</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/60 space-y-1.5">
+                        <div class="font-heading font-bold text-pink-600">Most Nouns (+S)</div>
+                        <p class="text-slate-600">book → book<b>s</b><br>cat → cat<b>s</b><br>pen → pen<b>s</b></p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/60 space-y-1.5">
+                        <div class="font-heading font-bold text-pink-600">Ends -ch, -sh, -x, -s (+ES)</div>
+                        <p class="text-slate-600">bus → bus<b>es</b><br>box → box<b>es</b><br>watch → watch<b>es</b></p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/60 space-y-1.5">
+                        <div class="font-heading font-bold text-pink-600">Consonant + Y (drop Y → -IES)</div>
+                        <p class="text-slate-600">baby → bab<b>ies</b><br>city → cit<b>ies</b><br>story → stor<b>ies</b></p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-1.5">
+                        <div class="font-heading font-bold text-amber-700">⚠️ Irregular Plurals</div>
+                        <p class="text-slate-700">child → <b>children</b><br>person → <b>people</b><br>tooth → <b>teeth</b></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 3: Quantifiers Quick Reference -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm space-y-6 card-hover">
+                <div class="flex items-center gap-3 text-blue-600">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center font-bold font-heading text-lg">3</div>
+                    <h3 class="text-xl font-bold font-heading text-slate-800">Quantifiers Guide</h3>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs md:text-sm">
+                        <thead>
+                            <tr class="border-b border-slate-200 text-slate-400 font-heading">
+                                <th class="pb-3">Quantifier</th>
+                                <th class="pb-3">Use With</th>
+                                <th class="pb-3">Example</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr>
+                                <td class="py-2.5 font-bold text-purple-600">Some / Any</td>
+                                <td class="py-2.5">Both Countable & Uncountable</td>
+                                <td class="py-2.5">"I have <b>some</b> apples." / "Is there <b>any</b> juice?"</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-blue-600">Many</td>
+                                <td class="py-2.5">Countable Plural Nouns</td>
+                                <td class="py-2.5">"How <b>many</b> books do you have?"</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-teal-600">Much</td>
+                                <td class="py-2.5">Uncountable Nouns</td>
+                                <td class="py-2.5">"We don't have <b>much</b> water."</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-emerald-600">A few / A little</td>
+                                <td class="py-2.5">Countable (few) / Uncountable (little)</td>
+                                <td class="py-2.5">"<b>A few</b> cookies" / "<b>A little</b> sugar"</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 font-bold text-amber-600">A lot of</td>
+                                <td class="py-2.5">Both (large quantity)</td>
+                                <td class="py-2.5">"She has <b>a lot of</b> friends and money!"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Big Start Practice Banner -->
+            <div class="bg-gradient-to-r from-purple-700 to-pink-600 rounded-3xl p-8 text-white text-center shadow-xl space-y-4">
+                <h3 class="text-2xl font-bold font-heading">Ready to practice? / ¡A practicar!</h3>
+                <p class="text-xs md:text-sm text-purple-100 max-w-xl mx-auto">
+                    Solve 20 interactive mini-exercises! You will get instant explanations after every single answer!
+                </p>
+                <div>
+                    <button onclick="goToView(2)" class="pulse-subtle bg-white text-purple-700 hover:bg-slate-100 px-8 py-4 rounded-full font-heading font-bold shadow-lg transition text-base inline-flex items-center gap-2">
+                        <span>Start 20 Exercises Now</span>
+                        <i class="fa-solid fa-gamepad"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ========================================================= -->
+        <!-- VIEW 2: 20 INTERACTIVE PRACTICE EXERCISES                 -->
+        <!-- ========================================================= -->
+        <div id="view-practice" class="hidden space-y-6">
+
+            <!-- Dynamic Header Status Bar -->
+            <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <span id="badge-question-type" class="text-xs font-bold font-heading px-3 py-1 rounded-full bg-purple-100 text-purple-700 uppercase">
+                        Basket Sort
+                    </span>
+                    <span id="quiz-progress-text" class="text-xs font-bold font-heading text-slate-600">Exercise 1 of 20</span>
+                </div>
+
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <div class="w-full sm:w-48 bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200/60">
+                        <div id="quiz-progress-bar" class="bg-gradient-to-r from-purple-500 to-pink-500 h-full w-[5%] transition-all duration-300"></div>
+                    </div>
+                    <div class="flex items-center gap-1 text-amber-500 font-heading font-bold text-sm min-w-[50px]">
+                        <i class="fa-solid fa-star"></i>
+                        <span id="score-counter">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Exercise Interactive Container -->
+            <div id="active-exercise-card" class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm space-y-6 transition-all">
+                <!-- Dynamically injected exercise content -->
+            </div>
+
+            <!-- Instant Feedback Box & Progression Bar -->
+            <div id="instant-feedback-card" class="hidden p-5 rounded-2xl border transition-all space-y-3">
+                <div class="flex items-start gap-3">
+                    <div id="feedback-icon-container" class="text-2xl mt-0.5"></div>
+                    <div class="space-y-1">
+                        <h4 id="feedback-title" class="font-heading font-bold text-base"></h4>
+                        <p id="feedback-explanation" class="text-xs md:text-sm leading-relaxed"></p>
+                    </div>
+                </div>
+                <div class="pt-2 flex justify-end">
+                    <button id="btn-next-exercise" onclick="nextExercise()" class="bg-purple-600 hover:bg-purple-700 text-white font-heading font-bold px-6 py-2.5 rounded-xl shadow-md text-sm transition inline-flex items-center gap-2">
+                        <span>Next Exercise</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ========================================================= -->
+        <!-- VIEW 3: FINAL RECAP & CELEBRATION                         -->
+        <!-- ========================================================= -->
+        <div id="view-review" class="hidden space-y-8">
+
+            <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm text-center space-y-6">
+                <div class="w-24 h-24 bg-gradient-to-tr from-amber-400 to-amber-200 text-amber-600 rounded-full flex items-center justify-center mx-auto text-5xl shadow-lg bounce-short">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 id="final-title" class="text-3xl font-bold font-heading text-slate-800">Challenge Completed!</h3>
+                    <p class="text-slate-500 text-xs md:text-sm">You answered all 20 interactive exercises!</p>
+                </div>
+
+                <div class="flex justify-center items-center gap-6 flex-wrap">
+                    <div class="bg-purple-50 border border-purple-100 px-8 py-4 rounded-2xl space-y-1">
+                        <span class="text-xs font-semibold text-slate-400 uppercase">Correct Answers</span>
+                        <div id="final-score-text" class="text-4xl font-bold font-heading text-purple-600">0 / 20</div>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-100 px-8 py-4 rounded-2xl space-y-1">
+                        <span class="text-xs font-semibold text-slate-400 uppercase">Accuracy</span>
+                        <div id="final-percentage-text" class="text-4xl font-bold font-heading text-emerald-600">0%</div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-3 pt-4">
+                    <button onclick="restartQuiz()" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-heading font-bold text-base shadow-lg transition inline-flex items-center gap-2">
+                        <i class="fa-solid fa-rotate-right"></i> Play Exercises Again
+                    </button>
+                    <button onclick="goToView(1)" class="px-8 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl font-heading font-bold text-base transition inline-flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> Review Grammar Guide
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-6 mt-8">
+        <div class="max-w-4xl mx-auto px-4 text-center text-xs text-slate-400 font-medium space-y-1">
+            <p>Grammar Galaxy • Interactive A2 English Learning App</p>
+            <p>Designed for practice: Countable/Uncountable Nouns, Plurals & Quantifiers</p>
+        </div>
+    </footer>
+
+
+    <!-- Application Script Logic -->
+    <script>
+        // ================= 20 DYNAMIC & INTERACTIVE EXERCISES =================
+        const exercises = [
+            // 1-5: Basket Tap/Sort (Countable vs Uncountable)
+            { id: 1, category: "Basket Sort", type: "sorter", prompt: "Sort item: 🍎 Apple", icon: "🍎", word: "Apple", options: ["Countable", "Uncountable"], correct: "Countable", explanation: "Awesome! You can count apples with numbers (1 apple, 2 apples)." },
+            { id: 2, category: "Basket Sort", type: "sorter", prompt: "Sort item: 💧 Water", icon: "💧", word: "Water", options: ["Countable", "Uncountable"], correct: "Uncountable", explanation: "Great! Water is a liquid, so it cannot be counted directly." },
+            { id: 3, category: "Basket Sort", type: "sorter", prompt: "Sort item: 🍚 Rice", icon: "🍚", word: "Rice", options: ["Countable", "Uncountable"], correct: "Uncountable", explanation: "Correct! Grains of rice form food mass, making it uncountable." },
+            { id: 4, category: "Basket Sort", type: "sorter", prompt: "Sort item: 🚗 Car", icon: "🚗", word: "Car", options: ["Countable", "Uncountable"], correct: "Countable", explanation: "Nice job! Cars are individual objects that you can count." },
+            { id: 5, category: "Basket Sort", type: "sorter", prompt: "Sort item: 🧀 Cheese", icon: "🧀", word: "Cheese", options: ["Countable", "Uncountable"], correct: "Uncountable", explanation: "Spot on! Cheese is a mass noun (uncountable) unless measured in slices/grams." },
+
+            // 6-10: Quantifier Selector
+            { id: 6, category: "Quantifier Card", type: "choice", prompt: "Is there ________ milk left in the fridge?", options: ["any", "many", "a few"], correct: "any", explanation: "Super! We use 'any' in questions with uncountable nouns like milk." },
+            { id: 7, category: "Quantifier Card", type: "choice", prompt: "How ________ apples did you buy?", options: ["much", "many", "a little"], correct: "many", explanation: "Well done! We ask 'How many' for countable plural nouns (apples)." },
+            { id: 8, category: "Quantifier Card", type: "choice", prompt: "We don't have ________ time before the test!", options: ["many", "much", "a few"], correct: "much", explanation: "Correct! 'Time' is uncountable, so we use 'much' in negative sentences." },
+            { id: 9, category: "Quantifier Card", type: "choice", prompt: "Can I have ________ sugar in my tea, please?", options: ["a little", "many", "a few"], correct: "a little", explanation: "Great! 'A little' means a small amount of an uncountable noun like sugar." },
+            { id: 10, category: "Quantifier Card", type: "choice", prompt: "Look! There are ________ people in the park!", options: ["a lot of", "a little", "much"], correct: "a lot of", explanation: "Perfect! 'A lot of' works with both countable and uncountable nouns for large quantities." },
+
+            // 11-15: Plural Transformer Machine
+            { id: 11, category: "Plural Machine", type: "choice", prompt: "Plural of 'Child 👶':", options: ["Childs", "Children", "Childes"], correct: "Children", explanation: "Correct! 'Child' has an irregular plural form: 'Children'." },
+            { id: 12, category: "Plural Machine", type: "choice", prompt: "Plural of 'Box 📦':", options: ["Boxs", "Boxes", "Boxies"], correct: "Boxes", explanation: "Nice! Words ending in -x add '-es' to become plural (Boxes)." },
+            { id: 13, category: "Plural Machine", type: "choice", prompt: "Plural of 'City 🏙️':", options: ["Citys", "Cities", "Citees"], correct: "Cities", explanation: "Awesome! Consonant + 'y' drops the 'y' and adds '-ies' (Cities)." },
+            { id: 14, category: "Plural Machine", type: "choice", prompt: "Plural of 'Tooth 🦷':", options: ["Tooths", "Teeth", "Teethes"], correct: "Teeth", explanation: "Spot on! 'Tooth' changes to 'Teeth' as an irregular plural." },
+            { id: 15, category: "Plural Machine", type: "choice", prompt: "Plural of 'Watch ⌚':", options: ["Watches", "Watchs", "Watchies"], correct: "Watches", explanation: "Great! Words ending in -ch add '-es' (Watches)." },
+
+            // 16-20: Odd One Out & Master Review
+            { id: 16, category: "Odd One Out", type: "choice", prompt: "Which word is UNCOUNTABLE? 🕵️", options: ["Banana 🍌", "Juice 🧃", "Coin 🪙"], correct: "Juice 🧃", explanation: "Correct! Juice is a liquid, while bananas and coins are countable." },
+            { id: 17, category: "Odd One Out", type: "choice", prompt: "Which word is COUNTABLE? 🕵️", options: ["Bread 🍞", "Money 💵", "Book 📖"], correct: "Book 📖", explanation: "Bingo! You can count 1 book, 2 books. Bread and money are uncountable." },
+            { id: 18, category: "Odd One Out", type: "choice", prompt: "Which quantifier goes with 'Books'? 📚", options: ["A few", "A little", "Much"], correct: "A few", explanation: "Super! 'A few' is used with countable plural nouns like books." },
+            { id: 19, category: "Odd One Out", type: "choice", prompt: "Which plural is WRONG? ❌", options: ["Man -> Men", "Person -> Persons", "Foot -> Feet"], correct: "Person -> Persons", explanation: "Sharp eye! The natural irregular plural of 'person' is 'people'." },
+            { id: 20, category: "Quantifier Card", type: "choice", prompt: "She has ________ friends because she is very kind.", options: ["a lot of", "much", "a little"], correct: "a lot of", explanation: "Excellent! 'A lot of' correctly expresses a large number of friends." }
+        ];
+
+        // State tracking
+        let activeIndex = 0;
+        let score = 0;
+        let answeredCurrent = false;
+
+        // Sound Synthesizer (Web Audio API)
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playTone(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            const now = audioCtx.currentTime;
+
+            if (type === 'correct') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.15); // E5
+                gain.gain.setValueAtTime(0.15, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                osc.start(now);
+                osc.stop(now + 0.25);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(220, now);
+                osc.frequency.setValueAtTime(180, now + 0.1);
+                gain.gain.setValueAtTime(0.12, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                osc.start(now);
+                osc.stop(now + 0.25);
+            }
+        }
+
+        // View Navigation
+        function goToView(step) {
+            document.getElementById('view-lessons').classList.add('hidden');
+            document.getElementById('view-practice').classList.add('hidden');
+            document.getElementById('view-review').classList.add('hidden');
+
+            [1, 2, 3].forEach(s => {
+                const badge = document.getElementById(`step-badge-${s}`);
+                badge.className = (s === step) 
+                    ? "text-xs font-bold font-heading px-3 py-1 rounded-full bg-purple-600 text-white shadow-sm"
+                    : "text-xs font-bold font-heading px-3 py-1 rounded-full bg-slate-100 text-slate-400";
+            });
+
+            if (step === 1) {
+                document.getElementById('view-lessons').classList.remove('hidden');
+            } else if (step === 2) {
+                document.getElementById('view-practice').classList.remove('hidden');
+                renderActiveExercise();
+            } else if (step === 3) {
+                document.getElementById('view-review').classList.remove('hidden');
+                renderFinalSummary();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Render current exercise
+        function renderActiveExercise() {
+            answeredCurrent = false;
+            document.getElementById('instant-feedback-card').classList.add('hidden');
+
+            const ex = exercises[activeIndex];
+            const total = exercises.length;
+
+            // Status Bar Updates
+            document.getElementById('badge-question-type').innerText = ex.category;
+            document.getElementById('quiz-progress-text').innerText = `Exercise ${activeIndex + 1} of ${total}`;
+            document.getElementById('quiz-progress-bar').style.width = `${((activeIndex + 1) / total) * 100}%`;
+            document.getElementById('score-counter').innerText = score;
+
+            const cardContainer = document.getElementById('active-exercise-card');
+            cardContainer.innerHTML = '';
+
+            if (ex.type === 'sorter') {
+                // Interactive Basket Tap-Sorter
+                cardContainer.innerHTML = `
+                    <div class="text-center space-y-4">
+                        <div class="inline-block bg-purple-50 text-purple-700 px-4 py-1.5 rounded-full text-xs font-heading font-bold">
+                            Basket Sort Exercise
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold font-heading text-slate-800">${ex.prompt}</h3>
+                        <p class="text-xs text-slate-400 font-semibold">Tap the correct basket below to sort this noun!</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <button onclick="handleAnswer('Countable', this)" class="opt-btn group p-6 rounded-3xl border-2 border-purple-100 bg-purple-50/50 hover:bg-purple-100/70 hover:border-purple-300 transition text-center space-y-2">
+                            <div class="text-4xl text-purple-600 group-hover:scale-110 transition">🧺</div>
+                            <div class="font-heading font-bold text-slate-800 text-lg">Countable Basket</div>
+                            <div class="text-xs text-slate-500">Things you can count (1, 2, 3...)</div>
+                        </button>
+                        <button onclick="handleAnswer('Uncountable', this)" class="opt-btn group p-6 rounded-3xl border-2 border-teal-100 bg-teal-50/50 hover:bg-teal-100/70 hover:border-teal-300 transition text-center space-y-2">
+                            <div class="text-4xl text-teal-600 group-hover:scale-110 transition">🪣</div>
+                            <div class="font-heading font-bold text-slate-800 text-lg">Uncountable Basket</div>
+                            <div class="text-xs text-slate-500">Liquids, food mass, ideas</div>
+                        </button>
+                    </div>
+                `;
+            } else {
+                // Standard & Interactive Multiple Choice
+                cardContainer.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="inline-block bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-xs font-heading font-bold">
+                            ${ex.category}
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold font-heading text-slate-800 leading-relaxed">${ex.prompt}</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                        ${ex.options.map(opt => `
+                            <button onclick="handleAnswer('${opt}', this)" class="opt-btn py-4 px-5 rounded-2xl border-2 border-slate-100 bg-slate-50 hover:bg-purple-50 hover:border-purple-300 font-heading font-bold text-slate-700 text-base transition text-center shadow-sm">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            }
+        }
+
+        // Handle User Option Selection with Instant Feedback
+        function handleAnswer(selectedVal, btnElem) {
+            if (answeredCurrent) return;
+            answeredCurrent = true;
+
+            const ex = exercises[activeIndex];
+            const isCorrect = (selectedVal === ex.correct);
+
+            // Disable option buttons
+            document.querySelectorAll('.opt-btn').forEach(btn => btn.setAttribute('disabled', 'true'));
+
+            const feedbackCard = document.getElementById('instant-feedback-card');
+            const iconContainer = document.getElementById('feedback-icon-container');
+            const titleElem = document.getElementById('feedback-title');
+            const expElem = document.getElementById('feedback-explanation');
+
+            if (isCorrect) {
+                playTone('correct');
+                score++;
+                document.getElementById('score-counter').innerText = score;
+
+                // Visual button state
+                btnElem.classList.remove('bg-slate-50', 'bg-purple-50/50', 'bg-teal-50/50');
+                btnElem.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600', 'bounce-short');
+
+                // Feedback UI
+                feedbackCard.className = "p-5 rounded-2xl border bg-emerald-50/80 border-emerald-200 text-emerald-950 space-y-3";
+                iconContainer.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-500"></i>`;
+                titleElem.innerText = "Awesome Job! ¡Excelente!";
+                expElem.innerText = ex.explanation;
+
+            } else {
+                playTone('wrong');
+
+                btnElem.classList.remove('bg-slate-50', 'bg-purple-50/50', 'bg-teal-50/50');
+                btnElem.classList.add('bg-rose-500', 'text-white', 'border-rose-600');
+
+                // Highlight correct button
+                document.querySelectorAll('.opt-btn').forEach(btn => {
+                    if (btn.innerText.includes(ex.correct)) {
+                        btn.classList.add('border-emerald-500', 'bg-emerald-100', 'text-emerald-800');
+                    }
+                });
+
+                feedbackCard.className = "p-5 rounded-2xl border bg-rose-50/80 border-rose-200 text-rose-950 space-y-3";
+                iconContainer.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-500"></i>`;
+                titleElem.innerText = `Oops! The correct answer is "${ex.correct}"`;
+                expElem.innerText = ex.explanation;
+            }
+
+            feedbackCard.classList.remove('hidden');
+            feedbackCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Advance to next exercise
+        function nextExercise() {
+            if (activeIndex < exercises.length - 1) {
+                activeIndex++;
+                renderActiveExercise();
+            } else {
+                goToView(3);
+            }
+        }
+
+        // Summary View logic
+        function renderFinalSummary() {
+            const total = exercises.length;
+            const percentage = Math.round((score / total) * 100);
+
+            document.getElementById('final-score-text').innerText = `${score} / ${total}`;
+            document.getElementById('final-percentage-text').innerText = `${percentage}%`;
+
+            if (score === total) {
+                document.getElementById('final-title').innerText = "🏆 Perfect 20/20! Grammar Master!";
+            } else if (score >= 15) {
+                document.getElementById('final-title').innerText = "🌟 Great Job! Super Star!";
+            } else {
+                document.getElementById('final-title').innerText = "👍 Good Effort! Keep Practicing!";
+            }
+
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Reset
+        function restartQuiz() {
+            activeIndex = 0;
+            score = 0;
+            goToView(2);
+        }
+
+        // Init App
+        window.onload = function() {
+            goToView(1);
+        };
+    </script>
+</body>
+</html>
